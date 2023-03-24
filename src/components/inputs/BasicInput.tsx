@@ -6,5 +6,4 @@ export const BasicInput = styled(InputBase)<InputBaseProps>(({ theme }) => ({
   borderRadius: 16,
   backgroundColor: 'white',
   paddingLeft: 15,
-  margin: 5,
 }));

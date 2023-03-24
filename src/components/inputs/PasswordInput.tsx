@@ -4,13 +4,7 @@ import { SecretIcon } from '../../style/icons';
 import { Box, Typography } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { type TypographyProps } from '@mui/material/Typography';
-
-interface Props {
-  error: boolean;
-  errorMessage?: string;
-  value: string;
-  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-}
+import { type InputSignUpForm } from '../../types/form';
 
 const ErrorTypography = styled(Typography)<TypographyProps>(({ theme }) => ({
   fontSize: 13,
@@ -22,7 +16,7 @@ export const PasswordInput = ({
   error = false,
   value,
   onChange,
-}: Props): JSX.Element => {
+}: InputSignUpForm): JSX.Element => {
   return (
     <Box sx={{ height: 53 }}>
       <BasicInput

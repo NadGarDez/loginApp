@@ -9,16 +9,13 @@ import { styled } from '@mui/material/styles';
 import { type TypographyProps } from '@mui/material/Typography';
 import { useFormik } from 'formik';
 import { signUpValidationSchema } from '../../constants/forms';
+import { type SignUpForm } from '../../types/form';
+import { auth } from '../../utils/session';
 
 const BoldTypography = styled(Typography)<TypographyProps>(() => ({
   fontWeight: 700,
   fontSize: 16,
 }));
-
-interface SignUpForm {
-  email: string;
-  password: string;
-}
 
 const formInitialValues: SignUpForm = {
   email: '',
@@ -28,8 +25,9 @@ const formInitialValues: SignUpForm = {
 export const LoginForm = (): JSX.Element => {
   const formik = useFormik({
     initialValues: formInitialValues,
-    onSubmit: (value: SignUpForm) => {
-      console.log(value, 'super values');
+    onSubmit: async (value: SignUpForm) => {
+      const results = await auth(value);
+      console.log(results);
     },
     validationSchema: signUpValidationSchema,
   });

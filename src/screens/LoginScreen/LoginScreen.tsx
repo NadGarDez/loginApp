@@ -11,7 +11,7 @@ const FormBox = styled(Box)<BoxProps>(({ theme }) => ({
   color: theme.palette.primary.contrastText,
   position: 'relative',
   overflow: 'hidden',
-  height: 480,
+  minHeight: 480,
   top: 0,
   zIndex: 1,
 }));

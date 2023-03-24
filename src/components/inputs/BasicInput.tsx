@@ -9,6 +9,7 @@ export const BasicInput = styled(InputBase)<InputBaseProps>(
     borderStyle: 'solid',
     borderColor: error ? 'red' : 'white',
     paddingLeft: 15,
+    paddingRight: 15,
     borderWidth: 2,
   }),
 );

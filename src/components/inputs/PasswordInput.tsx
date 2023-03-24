@@ -8,6 +8,8 @@ import { type TypographyProps } from '@mui/material/Typography';
 interface Props {
   error: boolean;
   errorMessage?: string;
+  value: string;
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 const ErrorTypography = styled(Typography)<TypographyProps>(({ theme }) => ({
@@ -17,17 +19,24 @@ const ErrorTypography = styled(Typography)<TypographyProps>(({ theme }) => ({
 
 export const PasswordInput = ({
   errorMessage = '',
-  error,
+  error = false,
+  value,
+  onChange,
 }: Props): JSX.Element => {
   return (
-    <>
+    <Box sx={{ height: 53 }}>
       <BasicInput
+        name="password"
+        type="password"
+        value={value}
         className="shadow"
+        onChange={onChange}
         startAdornment={
           <Box mr={1}>
             <SecretIcon />
           </Box>
         }
+        placeholder="password"
         error={error}
         fullWidth
       />
@@ -36,6 +45,6 @@ export const PasswordInput = ({
           <ErrorTypography>{errorMessage}</ErrorTypography>
         </Box>
       ) : null}
-    </>
+    </Box>
   );
 };

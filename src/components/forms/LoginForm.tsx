@@ -7,13 +7,33 @@ import { EmailInput } from '../inputs/EmailInput';
 import { PasswordInput } from '../inputs/PasswordInput';
 import { styled } from '@mui/material/styles';
 import { type TypographyProps } from '@mui/material/Typography';
+import { useFormik } from 'formik';
+import { signUpValidationSchema } from '../../constants/forms';
 
 const BoldTypography = styled(Typography)<TypographyProps>(() => ({
   fontWeight: 700,
   fontSize: 16,
 }));
 
+interface SignUpForm {
+  email: string;
+  password: string;
+}
+
+const formInitialValues: SignUpForm = {
+  email: '',
+  password: '',
+};
+
 export const LoginForm = (): JSX.Element => {
+  const formik = useFormik({
+    initialValues: formInitialValues,
+    onSubmit: (value: SignUpForm) => {
+      console.log(value, 'super values');
+    },
+    validationSchema: signUpValidationSchema,
+  });
+
   return (
     <>
       <Typography variant="h2" textAlign="center" mt={2.5}>
@@ -22,25 +42,45 @@ export const LoginForm = (): JSX.Element => {
       <Typography variant="subtitle1" textAlign="center" mt={1.1}>
         Sign in to continue
       </Typography>
-      <Box mt={1.1} ml={2} mr={2}>
-        <EmailInput error={false} />
-      </Box>
-      <Box mt={1.1} ml={2} mr={2}>
-        <PasswordInput error={false} />
-      </Box>
-      <Box mt={1.5} mr={2}>
-        <Link underline="none" href="https://www.google.com" target="_blank">
-          <Typography variant="body2" textAlign="right" sx={{ color: 'grey' }}>
-            Forgot your password ?
-          </Typography>
-        </Link>
-      </Box>
-      <Box mt={1.5} ml={2} mr={2}>
-        <PrincipalButton variant="contained" fullWidth className="shadow">
-          SignUp
-        </PrincipalButton>
-      </Box>
-
+      <form onSubmit={formik.handleSubmit}>
+        <Box mt={1.1} ml={2} mr={2}>
+          <EmailInput
+            errorMessage={formik.errors.email ?? ''}
+            error={'email' in formik.errors && 'email' in formik.touched}
+            value={formik.values.email}
+            onChange={formik.handleChange}
+          />
+        </Box>
+        <Box mt={1.1} ml={2} mr={2}>
+          <PasswordInput
+            error={'password' in formik.errors && 'password' in formik.touched}
+            value={formik.values.password}
+            errorMessage={formik.errors.password ?? ''}
+            onChange={formik.handleChange}
+          />
+        </Box>
+        <Box mt={1.5} mr={2}>
+          <Link underline="none" href="https://www.google.com" target="_blank">
+            <Typography
+              variant="body2"
+              textAlign="right"
+              sx={{ color: 'grey' }}
+            >
+              Forgot your password ?
+            </Typography>
+          </Link>
+        </Box>
+        <Box mt={1.5} ml={2} mr={2}>
+          <PrincipalButton
+            variant="contained"
+            fullWidth
+            className="shadow"
+            type="submit"
+          >
+            SignUp
+          </PrincipalButton>
+        </Box>
+      </form>
       <Box mt={1.1}>
         <Typography variant="body2" textAlign="center" sx={{ color: 'black' }}>
           OR

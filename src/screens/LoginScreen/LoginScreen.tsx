@@ -1,7 +1,5 @@
-import React from "react"
+import React from 'react';
 
-
-export const LoginScreen = ():JSX.Element=> {
-    return <>
-    </>
-}
+export const LoginScreen = (): JSX.Element => {
+  return <></>;
+};

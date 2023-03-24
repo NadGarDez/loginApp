@@ -8,7 +8,7 @@ import { PasswordInput } from '../inputs/PasswordInput';
 import { styled } from '@mui/material/styles';
 import { type TypographyProps } from '@mui/material/Typography';
 
-export const BoldTypography = styled(Typography)<TypographyProps>(() => ({
+const BoldTypography = styled(Typography)<TypographyProps>(() => ({
   fontWeight: 700,
   fontSize: 16,
 }));
@@ -23,10 +23,10 @@ export const LoginForm = (): JSX.Element => {
         Sign in to continue
       </Typography>
       <Box mt={1.1} ml={2} mr={2}>
-        <EmailInput />
+        <EmailInput error={false} />
       </Box>
       <Box mt={1.1} ml={2} mr={2}>
-        <PasswordInput />
+        <PasswordInput error={false} />
       </Box>
       <Box mt={1.5} mr={2}>
         <Link underline="none" href="https://www.google.com" target="_blank">

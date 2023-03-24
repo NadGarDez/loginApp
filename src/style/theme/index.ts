@@ -6,10 +6,10 @@ export const theme: ThemeOptions = createTheme({
     mode: 'light',
     primary: {
       main: '#f3518c',
+      light: '#ec80a7',
     },
     secondary: {
-      main: '#f50057',
-      dark: '#1c1c1c',
+      main: '#1c1c1c',
     },
     background: {
       default: '#e5e5e5',
@@ -34,6 +34,15 @@ export const theme: ThemeOptions = createTheme({
     },
     subtitle2: {
       fontSize: 18,
+    },
+  },
+  components: {
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          textTransform: 'none',
+        },
+      },
     },
   },
 });

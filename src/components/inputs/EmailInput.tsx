@@ -20,6 +20,7 @@ export const EmailInput = ({
   return (
     <Box sx={{ height: 53 }}>
       <BasicInput
+        inputProps={{ 'data-testid': 'email-input' }}
         value={value}
         name="email"
         className="shadow"

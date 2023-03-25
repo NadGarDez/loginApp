@@ -20,6 +20,7 @@ export const PasswordInput = ({
   return (
     <Box sx={{ height: 53 }}>
       <BasicInput
+        inputProps={{ 'data-testid': 'password-input' }}
         name="password"
         type="password"
         value={value}

@@ -10,7 +10,7 @@ import { type TypographyProps } from '@mui/material/Typography';
 import { useFormik } from 'formik';
 import { signUpValidationSchema } from '../../constants/forms';
 import { type SignUpForm } from '../../types/form';
-import { auth } from '../../utils/session';
+import { auth, configureToken } from '../../utils/session';
 
 const BoldTypography = styled(Typography)<TypographyProps>(() => ({
   fontWeight: 700,
@@ -27,7 +27,11 @@ export const LoginForm = (): JSX.Element => {
     initialValues: formInitialValues,
     onSubmit: async (value: SignUpForm) => {
       const results = await auth(value);
-      console.log(results);
+      if (results.status !== 400) {
+        configureToken(results.data.token);
+      } else {
+        alert(`${results.data.message}. \n Invalid email or password`);
+      }
     },
     validationSchema: signUpValidationSchema,
   });

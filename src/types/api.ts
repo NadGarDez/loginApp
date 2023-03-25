@@ -1,5 +1,8 @@
 export interface AxiosResponse {
-  data?: Record<string, unknown>;
+  data: {
+    message: string;
+    token: string;
+  };
   status: number;
   statusText: string;
   headers: Record<string, unknown>;
@@ -8,6 +11,9 @@ export interface AxiosResponse {
 }
 
 export interface AuthReturn {
-  data: Record<string, unknown> | undefined;
+  data: {
+    message: string;
+    token: string;
+  };
   status: number;
 }

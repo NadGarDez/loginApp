@@ -4,10 +4,12 @@ import type { RootState } from '../store';
 
 interface authToken {
   value: string | null;
+  loading: boolean;
 }
 
 const initialState: authToken = {
   value: null,
+  loading: true,
 };
 
 const authTokenSlice = createSlice({
@@ -20,10 +22,15 @@ const authTokenSlice = createSlice({
     clearToken: (state) => {
       state.value = null;
     },
+    setLoading: (state, action: PayloadAction<boolean>) => {
+      state.loading = action.payload;
+    },
   },
 });
 
 export const authTokenSelector = (state: RootState): string | null =>
   state.authToken.value;
-export const { setToken, clearToken } = authTokenSlice.actions;
+export const isLoadingTokenSelector = (state: RootState): boolean =>
+  state.authToken.loading;
+export const { setToken, clearToken, setLoading } = authTokenSlice.actions;
 export default authTokenSlice.reducer;

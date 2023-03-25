@@ -3,7 +3,7 @@ export const setCookie = (
   value: string,
   expiration: string,
 ): void => {
-  const cookieString = `${name}=${value}; expires=${expiration}`;
+  const cookieString = `${name}=${value}; expires=${expiration}; path=/`;
   document.cookie = cookieString;
 };
 
@@ -19,6 +19,6 @@ export const getCookie = (
 };
 
 export const deleteCookie = (name: string): void => {
-  const deletedCookie = `${name}=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;`;
+  const deletedCookie = `${name}=; Expires=Thu, 01 Jan 1970 00:00:01 GMT; path=/`;
   document.cookie = deletedCookie;
 };

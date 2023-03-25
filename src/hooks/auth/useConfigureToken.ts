@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { getCookie } from '../../utils/cookies';
 import { useDispatch, useSelector } from 'react-redux';
 import {
+  clearToken,
   isLoadingTokenSelector,
   setLoading,
   setToken,
@@ -14,8 +15,9 @@ export const useConfigureToken = (): void => {
   useEffect(() => {
     const token = getCookie(document.cookie, 'login_app_cookie');
     if (token !== undefined) {
-      console.log('aca');
       dispatch(setToken(token));
+    } else {
+      dispatch(clearToken());
     }
     dispatch(setLoading(false));
   }, [loadingToken]);

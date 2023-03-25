@@ -7,7 +7,6 @@ import { UserScreen } from './screens/UserScreen/UserScreen';
 
 function App(): JSX.Element {
   const token = useSelector(authTokenSelector);
-  console.log(token);
 
   useConfigureToken();
 

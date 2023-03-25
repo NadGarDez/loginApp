@@ -1,4 +1,4 @@
-import { Box, Link, Typography } from '@mui/material';
+import { Box, CircularProgress, Link, Typography } from '@mui/material';
 import React from 'react';
 import { GoogleIcon } from '../../style/icons';
 import { DarkButton } from '../buttons/DarkButton';
@@ -35,7 +35,6 @@ export const LoginForm = (): JSX.Element => {
     },
     validationSchema: signUpValidationSchema,
   });
-
   return (
     <>
       <Typography variant="h2" textAlign="center" mt={2.5}>
@@ -78,8 +77,9 @@ export const LoginForm = (): JSX.Element => {
             fullWidth
             className="shadow"
             type="submit"
+            disabled={formik.isSubmitting}
           >
-            SignUp
+            {formik.isSubmitting ? <CircularProgress /> : 'Sign Up'}
           </PrincipalButton>
         </Box>
       </form>

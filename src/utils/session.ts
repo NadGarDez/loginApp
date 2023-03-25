@@ -5,7 +5,7 @@ import { setLoading } from '../reduxFiles/reducers/authTokenSlice';
 import { store } from '../reduxFiles/store';
 import { type AuthReturn, type AxiosResponse } from '../types/api';
 import { type SignUpForm } from '../types/form';
-import { setCookie } from './cookies';
+import { deleteCookie, setCookie } from './cookies';
 
 export const auth = async (form: SignUpForm): Promise<AuthReturn> => {
   try {
@@ -45,4 +45,9 @@ export const configureToken = (token: string): void => {
   store.dispatch(setLoading(true));
   const expiration = moment().add(3, 'days').format('llll');
   setCookie('login_app_cookie', token, expiration);
+};
+
+export const logout = (): void => {
+  deleteCookie('login_app_cookie');
+  store.dispatch(setLoading(true));
 };

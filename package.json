@@ -1,6 +1,7 @@
 {
   "name": "login_app",
   "version": "0.1.0",
+  "homepage": "https://NadGarDez.github.io/loginapp",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.10.6",
@@ -16,6 +17,7 @@
     "@types/react-dom": "^18.0.2",
     "axios": "^1.3.4",
     "formik": "^2.2.9",
+    "gh-pages": "^5.0.0",
     "moment": "^2.29.4",
     "react": "^18.2.0",
     "react-cookie": "^4.1.1",
@@ -27,6 +29,8 @@
     "yup": "^1.0.2"
   },
   "scripts": {
+    "predeploy": "yarn run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --watchAll=false",

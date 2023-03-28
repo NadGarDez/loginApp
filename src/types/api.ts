@@ -51,4 +51,5 @@ export interface UserReturn {
       }
     | undefined;
   status: number;
+  errorMessage?: string;
 }

@@ -14,11 +14,13 @@ export const getUser = async (token: string): Promise<UserReturn> => {
   } catch (error) {
     if (error instanceof AxiosError) {
       return {
-        status: error.status ?? 400,
+        status: error.response?.data.status,
+        errorMessage: error.response?.data.message,
       };
     }
     return {
       status: 400,
+      errorMessage: 'Unexpected error',
     };
   }
 };
